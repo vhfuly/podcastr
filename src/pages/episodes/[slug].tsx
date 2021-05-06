@@ -1,5 +1,6 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { format, parseISO } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
@@ -29,9 +30,11 @@ export default function Episode ({ episode }: EpisodeProps) {
   return (
     <div className={style.episode}>
       <div className={style.thumbnailContainer}>
-        <button type='button'>
-          <img src='/arrow-left.svg' alt="Voltar"/>
-        </button>
+        <Link href='/'>
+          <button type='button'>
+            <img src='/arrow-left.svg' alt="Voltar"/>
+          </button>
+        </Link>
         <Image 
           width={700}
           height= {160}
@@ -41,18 +44,18 @@ export default function Episode ({ episode }: EpisodeProps) {
         <button type='button'>
           <img src='/play.svg' alt="Tocar episódio"/>
         </button>
-
-        <header>
-          <h1>{episode.title}</h1>
-          <span>{episode.members}</span>
-          <span>{episode.publishedAt}</span>
-          <span>{episode.durationAsString}</span>
-        </header>
-
-        <div className={style.description} 
-          dangerouslySetInnerHTML={{__html: episode.description}} 
-        />
       </div>
+
+      <header>
+        <h1>{episode.title}</h1>
+        <span>{episode.members}</span>
+        <span>{episode.publishedAt}</span>
+        <span>{episode.durationAsString}</span>
+      </header>
+
+      <div className={style.description} 
+        dangerouslySetInnerHTML={{__html: episode.description}} 
+      />
     </div>
   );
 }
