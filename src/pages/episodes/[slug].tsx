@@ -1,6 +1,7 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import Head from 'next/head';
 
 import { format, parseISO } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
@@ -32,6 +33,9 @@ export default function Episode ({ episode }: EpisodeProps) {
 
   return (
     <div className={style.episode}>
+      <Head>
+        <title>{episode.title}</title>
+      </Head>
       <div className={style.thumbnailContainer}>
         <Link href='/'>
           <button type='button'>
