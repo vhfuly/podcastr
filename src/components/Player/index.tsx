@@ -17,7 +17,6 @@ export function Player() {
     if (!audioRef.current) {
       return;
     }
-
     if (isPlaying) {
       audioRef.current.play();
     } else {
